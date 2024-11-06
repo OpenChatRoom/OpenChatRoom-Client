@@ -34,6 +34,22 @@
             padding: 8px;
             border-radius: 5px;
         }
+
+        .sentmessage {
+            margin-bottom: 10px;
+        }
+        
+        .sentmessage .user {
+            font-weight: bolder;
+            margin-right: 5px;
+        }
+
+        .sentmessage .text {
+            display: inline-block;
+            background-color: lightcoral;
+            padding: 8px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -41,6 +57,8 @@
 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Chat Room</h2>
+        <h4 class="text-center mb-4">Basically GMAIL chats</h4>
+        <h6 class="text-center mb-4">*** Just and exmaple webpage as a demo for client to server communication ***</h6>
 
         <!-- Chat Window -->
         <div id="chatWindow" class="chat-window mb-4">
@@ -53,6 +71,13 @@
             <input type="text" id="messageInput" class="form-control me-2" placeholder="Type your message" required>
             <button type="submit" class="btn btn-primary">Send</button>
         </form>
+        <br>
+        <p>Expiramental, not for actual use</p>
+        <br>
+        <a href="https://connor33341.github.io">Homepage</a>
+        <a href="https://github.com/connor33341">Profile</a>
+        <a href="/" onclick="location.reload()">Reload</a>
+
     </div>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
@@ -68,7 +93,7 @@
         // Function to add a message to the chat window
         function addMessage(user, text) {
             const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
+            messageElement.classList.add('sentmessage');
             messageElement.innerHTML = `
       <span class="user">${user}:</span>
       <span class="text">${text}</span>
