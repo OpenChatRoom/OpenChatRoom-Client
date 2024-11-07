@@ -1,0 +1,41 @@
+/* Custom styles */
+.chat-window {
+    height: 400px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message .user {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.message .text {
+    display: inline-block;
+    background-color: #e3f2fd;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.sentmessage {
+    margin-bottom: 10px;
+}
+
+.sentmessage .user {
+    font-weight: bolder;
+    margin-right: 5px;
+}
+
+.sentmessage .text {
+    display: inline-block;
+    background-color: lightcoral;
+    padding: 8px;
+    border-radius: 5px;
+}

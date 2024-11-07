@@ -6,59 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Room</title>
     <!-- Bootstrap 5 CSS -->
-    <link type="stylesheet" href="css/style.css">
+    <link href=".\css\style.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom styles */
-        .chat-window {
-            height: 400px;
-            overflow-y: auto;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        .message {
-            margin-bottom: 10px;
-        }
-
-        .message .user {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-
-        .message .text {
-            display: inline-block;
-            background-color: #e3f2fd;
-            padding: 8px;
-            border-radius: 5px;
-        }
-
-        .sentmessage {
-            margin-bottom: 10px;
-        }
-        
-        .sentmessage .user {
-            font-weight: bolder;
-            margin-right: 5px;
-        }
-
-        .sentmessage .text {
-            display: inline-block;
-            background-color: lightcoral;
-            padding: 8px;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 
 <body>
 
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Chat Room</h2>
+        <!--<h2 class="text-center mb-4">Chat Room</h2>
         <h4 class="text-center mb-4">Basically GMAIL chats</h4>
-        <h6 class="text-center mb-4">*** Just and exmaple webpage as a demo for client to server communication ***</h6>
+        <h6 class="text-center mb-4">*** Just and exmaple webpage as a demo for client to server communication ***</h6>-->
 
         <!-- Chat Window -->
         <div id="chatWindow" class="chat-window mb-4">
@@ -66,13 +23,13 @@
         </div>
 
         <!-- Input form for chat message -->
-        <form id="chatForm" class="d-flex">
-            <input type="text" id="userName" class="form-control me-2" placeholder="Your name" required>
-            <input type="text" id="messageInput" class="form-control me-2" placeholder="Type your message" required>
+        <form id="chatForm" class="d-flex" action="https://openchatroom.glitch.me/post/form/" method="post">
+            <input type="text" id="userName" class="form-control me-2" placeholder="Your name" name="username" required>
+            <input type="text" id="messageInput" class="form-control me-2" placeholder="Type your message" name="text" required>
             <button type="submit" class="btn btn-primary">Send</button>
         </form>
         <br>
-        <p>Expiramental, not for actual use</p>
+        <!--<p>Expiramental, not for actual use</p>-->
         <br>
         <a href="https://connor33341.github.io">Homepage</a>
         <a href="https://github.com/connor33341">Profile</a>
@@ -84,37 +41,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JavaScript to handle chat functionality -->
-    <script>
-        const chatWindow = document.getElementById('chatWindow');
-        const chatForm = document.getElementById('chatForm');
-        const userNameInput = document.getElementById('userName');
-        const messageInput = document.getElementById('messageInput');
-
-        // Function to add a message to the chat window
-        function addMessage(user, text) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('sentmessage');
-            messageElement.innerHTML = `
-      <span class="user">${user}:</span>
-      <span class="text">${text}</span>
-    `;
-            chatWindow.appendChild(messageElement);
-            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to the bottom
-        }
-
-        // Handle form submission to send a message
-        chatForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const user = userNameInput.value.trim();
-            const text = messageInput.value.trim();
-
-            if (user && text) {
-                addMessage(user, text);
-                messageInput.value = ''; // Clear the message input
+    <script src="./js/main.js" type="module"></script>
+    <script src="./js/client.js" type="module"></script>
+    <script type="module">
+        import {OCRClient} from "./js/client.js"
+        import {AddMessage} from "./js/main.js"
+        const UserNameInput = document.getElementById('userName');
+        console.log("Client Init")
+        const Client = new OCRClient();
+        function FetchMessages(){
+            console.log("Fetching Messages")
+            var Messages = Client.FetchMessages()
+            console.log(Messages)
+            /*for (let i in Messages){
+                console.log("MSG Index: "+i)
+                var Object = Messages[i]
+                var UUID = Object[0]
+                var UserName = Object[1]
+                var Text = Object[2]
+                if (UserName == UserNameInput.value.trim()){
+                    AddMessage(UserName,Text,"sentmessage")
+                } else {
+                    AddMessage(UserName,Text,"message")
+                }
             }
-        });
+            */
+        }
+        setInterval(FetchMessages,2000)
     </script>
-
 </body>
 
 </html>
