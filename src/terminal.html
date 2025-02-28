@@ -96,11 +96,25 @@
                     print("Updated")
                 }
 
+                if (data[0] == "authtype"){
+                    print("Setting auth")
+                    localStorage.setItem("authtype",data[1])
+                    print("Value Set")
+                }
+
+                if (data[0] == "authcode"){
+                    print("Setting auth")
+                    localStorage.setItem("authcode",data[1])
+                    print("Value Set")
+                }
+
                 if (data[0] == "help"){
                     print("--- Help ---")
                     print("endpoint$[HTTP ENDPOINT]")
                     print("resetendpoint")
                     print("username$[USERNAME]")
+                    print("authtype$[AUTHTYPE]")
+                    print("authcode$[AUTHCODE]")
                 }
 
                 // Clear input

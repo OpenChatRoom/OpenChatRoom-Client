@@ -13,6 +13,16 @@
 <body>
 
     <div class="container mt-5">
+        <div class="dropdown mb-3 text-end">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="signInDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Sign In
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="signInDropdown">
+                <li><a class="dropdown-item" href="#" onclick="signIn('github')">Sign in with GitHub</a></li>
+                <li><a class="dropdown-item" href="#" onclick="signIn('discord')">Sign in with Discord</a></li>
+                <li><a class="dropdown-item" href="terminal.html" onclick="signIn('email')">Sign in with Terminal</a></li>
+            </ul>
+        </div>
         <!--<h2 class="text-center mb-4">Chat Room</h2>
         <h4 class="text-center mb-4">Basically GMAIL chats</h4>
         <h6 class="text-center mb-4">*** Just and exmaple webpage as a demo for client to server communication ***</h6>-->

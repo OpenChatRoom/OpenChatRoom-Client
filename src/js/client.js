@@ -5,7 +5,7 @@ export class OCRClient {
     constructor() {
         this.Messages = []
         this.NewMessages = [
-            //["UUID","USERNAME","MESSAGE"]
+            //["UUID","USERNAME","MESSAGE","VERIFIED"]
         ]
         if (localStorage.getItem("endpoint")){
             Endpoint = localStorage.getItem("endpoint") + "/get/messages/"
@@ -26,6 +26,8 @@ export class OCRClient {
                     var UUID = Object[0]
                     var User = Object[1]
                     var Text = Object[2]
+                    var Verified = Object[3]
+                    var AuthType = Object[4]
                     let Found = false
                     for (let n in MessagesV) {
                         var SearchObject = MessagesV[n]
@@ -40,7 +42,15 @@ export class OCRClient {
                         if (User == UserNameInput.value.trim()) {
                             AddMessage(User, Text, "sentmessage")
                         } else {
-                            AddMessage(User, Text, "message")
+                            if (!Verified){
+                                AddMessage(User, Text, "untrustmessage")
+                            } else {
+                                if (AuthType == "owner"){
+                                    AddMessage(User,Text,"ownermessage")
+                                } else {
+                                    AddMessage(User, Text, "message")
+                                }
+                            }
                         }
                     }
                 }

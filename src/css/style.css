@@ -25,6 +25,16 @@
     color: white;
 }
 
+.untrustmessage {
+    margin-bottom: 10px;
+}
+
+.untrustmessage .user {
+    font-weight: bolder;
+    margin-right: 5px;
+    color:rgb(240, 232, 128);
+}
+
 .sentmessage {
     margin-bottom: 10px;
 }
@@ -37,6 +47,32 @@
 .sentmessage .text {
     display: inline-block;
     background-color: lightcoral;
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+}
+
+.untrustmessage .text {
+    display: inline-block;
+    background-color: rgb(6, 153, 252);
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+}
+
+.ownermessage {
+    margin-bottom: 10px;
+}
+
+.ownermessage .user {
+    font-weight: bolder;
+    margin-right: 5px;
+    color:rgb(132, 240, 128)
+}
+
+.ownermessage .text {
+    display: inline-block;
+    background-color: rgb(132, 240, 128);
     padding: 8px;
     border-radius: 5px;
     color: white;

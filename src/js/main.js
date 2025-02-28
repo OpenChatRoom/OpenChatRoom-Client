@@ -22,15 +22,27 @@ chatForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const user = userNameInput.value.trim();
     const text = messageInput.value.trim();
+    let authCode = "";
+    let authType = "";
     localStorage.setItem("username",user)
     if (localStorage.getItem("endpoint")){
         Endpoint = localStorage.getItem("endpoint") + "/post/form/"
     }
 
+    try {
+        authCode = localStorage.getItem("authcode")
+        authType = localStorage.getItem("authtype")
+        console.log(`Found Auth Data: ${authCode} ${authType}`)
+    } catch(error) {
+    }
+    let formData = new FormData(chatForm)
+    formData.append("authcode",authCode)
+    formData.append("authtype",authType)
+
     if (user && text) {
         fetch(Endpoint, {
             method: "post",
-            body: new FormData(chatForm)
+            body: formData
         })
         messageInput.value = ''; // Clear the message input
     }
