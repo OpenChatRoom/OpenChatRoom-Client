@@ -1,11 +1,15 @@
 import { AddMessage } from "./main.js"
 const UserNameInput = document.getElementById('userName');
+export let Endpoint = "https://openchatroom.glitch.me/get/messages/"
 export class OCRClient {
     constructor() {
         this.Messages = []
         this.NewMessages = [
             //["UUID","USERNAME","MESSAGE"]
         ]
+        if (localStorage.getItem("endpoint")){
+            Endpoint = localStorage.getItem("endpoint") + "/get/messages"
+        }
     }
     FetchMessages() {
         this.NewMessages = []
@@ -44,7 +48,7 @@ export class OCRClient {
         };
         this.NewMessages = NewMessagesV
         this.Messages.concat(MessagesV)
-        xhttp.open("GET", "https://openchatroom.glitch.me/get/messages/")
+        xhttp.open("GET", Endpoint)
         xhttp.send()
         return NewMessagesV
     }

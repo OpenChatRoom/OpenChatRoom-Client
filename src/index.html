@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -48,6 +48,12 @@
         import {AddMessage} from "./js/main.js"
         const UserNameInput = document.getElementById('userName');
         console.log("Client Init")
+        if (!localStorage.getItem("endpoint")){
+            //localStorage.setItem("endpoint","https://openchatroom.glitch.me/")
+        }
+        if (localStorage.getItem("username")){
+            UserNameInput.value = localStorage.getItem("username")
+        }
         const Client = new OCRClient();
         function FetchMessages(){
             console.log("Fetching Messages")

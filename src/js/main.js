@@ -15,14 +15,20 @@ export function AddMessage(user, text, classname) {
     chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to the bottom
 }
 
+export let Endpoint = "https://openchatroom.glitch.me/post/form/"
+
 // Handle form submission to send a message
 chatForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const user = userNameInput.value.trim();
     const text = messageInput.value.trim();
+    localStorage.setItem("username",user)
+    if (localStorage.getItem("endpoint")){
+        Endpoint = localStorage.getItem("endpoint") + "/post/form"
+    }
 
     if (user && text) {
-        fetch("https://openchatroom.glitch.me/post/form/", {
+        fetch(Endpoint, {
             method: "post",
             body: new FormData(chatForm)
         })

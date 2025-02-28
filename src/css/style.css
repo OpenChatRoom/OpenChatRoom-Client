@@ -2,7 +2,7 @@
 .chat-window {
     height: 400px;
     overflow-y: auto;
-    background-color: #f9f9f9;
+    background-color: rgb(45,45,45);
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -19,9 +19,10 @@
 
 .message .text {
     display: inline-block;
-    background-color: #e3f2fd;
+    background-color: rgb(6, 153, 252);/*#e3f2fd;*/
     padding: 8px;
     border-radius: 5px;
+    color: white;
 }
 
 .sentmessage {
@@ -38,4 +39,5 @@
     background-color: lightcoral;
     padding: 8px;
     border-radius: 5px;
+    color: white;
 }
