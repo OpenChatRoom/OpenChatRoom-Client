@@ -8,7 +8,7 @@ export class OCRClient {
             //["UUID","USERNAME","MESSAGE"]
         ]
         if (localStorage.getItem("endpoint")){
-            Endpoint = localStorage.getItem("endpoint") + "/get/messages"
+            Endpoint = localStorage.getItem("endpoint") + "/get/messages/"
         }
     }
     FetchMessages() {

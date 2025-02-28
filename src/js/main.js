@@ -24,7 +24,7 @@ chatForm.addEventListener('submit', function (event) {
     const text = messageInput.value.trim();
     localStorage.setItem("username",user)
     if (localStorage.getItem("endpoint")){
-        Endpoint = localStorage.getItem("endpoint") + "/post/form"
+        Endpoint = localStorage.getItem("endpoint") + "/post/form/"
     }
 
     if (user && text) {
