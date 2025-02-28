@@ -29,6 +29,13 @@ export class OCRClient {
                     var Verified = Object[3]
                     var AuthType = Object[4]
                     let Found = false
+                    let FormattedUser = ""
+                    //console.log("AuthType: "+AuthType)
+                    if (AuthType == "" || AuthType == "null"){
+                        FormattedUser = `[guest] ${User}`
+                    } else {
+                        FormattedUser = `[${AuthType}] ${User}`
+                    }
                     for (let n in MessagesV) {
                         var SearchObject = MessagesV[n]
                         if (UUID == SearchObject[0]) {
@@ -40,15 +47,15 @@ export class OCRClient {
                         MessagesV.push([UUID, User, Text])
                         NewMessagesV.push([UUID, User, Text])
                         if (User == UserNameInput.value.trim()) {
-                            AddMessage(User, Text, "sentmessage")
+                            AddMessage(FormattedUser, Text, "sentmessage")
                         } else {
-                            if (!Verified){
-                                AddMessage(User, Text, "untrustmessage")
+                            if (AuthType == "" || AuthType == "null"){
+                                AddMessage(FormattedUser, Text, "untrustmessage")
                             } else {
                                 if (AuthType == "owner"){
-                                    AddMessage(User,Text,"ownermessage")
+                                    AddMessage(FormattedUser,Text,"ownermessage")
                                 } else {
-                                    AddMessage(User, Text, "message")
+                                    AddMessage(FormattedUser, Text, "message")
                                 }
                             }
                         }
