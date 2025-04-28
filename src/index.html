@@ -8,6 +8,17 @@
     <!-- Bootstrap 5 CSS -->
     <link href=".\css\style.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 
+        #inject htmlconfig start
+        #inject config parser use:"settings.commentconfig:true"
+        #inject config parser use:"settings.eleminject:true"
+        elem: [banner:"Client is down currently",depends:"https://openchatroom.github.io/OpenChatRoom-Client:404",template:"standardtemplates/banner"]
+        elem: [div:"class='container mt-5'",name:"#root"]
+        script: [params:"#root"]
+        #inject htmlconfig end
+    -->
+    <link href="https://inject.connor33341.dev/version/4.3.9/config.json" type="text/json">
+    <script src="https://inject.connor33341.dev/version/4.3.9/main.min.js">
 </head>
 
 <body>
